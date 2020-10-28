@@ -73,6 +73,7 @@
             this.tb_password.Size = new System.Drawing.Size(125, 20);
             this.tb_password.TabIndex = 8;
             this.tb_password.TextChanged += new System.EventHandler(this.tb_password_TextChanged);
+            this.tb_password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_password_KeyDown);
             // 
             // tb_username
             // 
@@ -81,6 +82,7 @@
             this.tb_username.Size = new System.Drawing.Size(125, 20);
             this.tb_username.TabIndex = 7;
             this.tb_username.TextChanged += new System.EventHandler(this.tb_username_TextChanged);
+            this.tb_username.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_username_KeyDown);
             // 
             // label1
             // 

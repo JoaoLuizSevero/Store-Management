@@ -75,7 +75,7 @@ namespace StoreManagement
 
         public static DataTable GetAllUsers()
         {
-            return DataQuery("SELECT * FROM tb_users");
+            return DataQuery("SELECT N_ID as 'ID', T_NAME as 'Name', CASE WHEN N_ACCESSLEVEL = 0 THEN 'Intern' WHEN N_ACCESSLEVEL = 1 THEN 'Operator' WHEN N_ACCESSLEVEL = 2 THEN 'Supervisor' WHEN N_ACCESSLEVEL = 3 THEN 'Manager' END as 'Access level' FROM tb_users WHERE T_NAME NOT IN (SELECT T_NAME FROM `tb_users` WHERE T_NAME='admin') ORDER BY N_ID");
         }
 
         public static DataTable GetUser(string username, string password)
@@ -83,21 +83,31 @@ namespace StoreManagement
             return DataQuery("SELECT * FROM tb_users WHERE T_USERNAME='" + username + "' AND T_PASSWORD='" + password + "'");
         }
 
-        public static void NewUser(User newUser)
+        public static DataTable GetUserPerId(Int32 id)
         {
-            var command = "INSERT INTO tb_users (T_NAME, T_USERNAME, T_PASSWORD, N_ACCESSLEVEL, T_PHOTO) VALUES ('"+newUser.name+"','"+newUser.username+"','"+newUser.password+"',"+newUser.accessLevel+",'"+newUser.photo+"')";
+            return DataQuery("SELECT * FROM tb_users WHERE N_ID=" + id);
+        }
+
+        public static void DeleteUser(string id)
+        {
+            DataManipulation("DELETE FROM tb_users WHERE N_ID = " + id,"User deleted!","Error deleting user!");
+        }
+
+        public static void NewUser(User thisUser) 
+        {
+            var command = "INSERT INTO tb_users (T_NAME, T_USERNAME, T_PASSWORD, N_ACCESSLEVEL, T_PHOTO) VALUES ('"+ thisUser.name+"','"+ thisUser.username+"','"+ thisUser.password+"',"+ thisUser.accessLevel+",'"+ thisUser.photo+"')";
             var successMessage = "New user added!";
             var errorMessage = "Error adding new user!";
             DataManipulation(command, successMessage, errorMessage);
         }
 
-        /*
-        "SELECT N_IDUSUARIO as 'ID Usuário',T_NOMEUSUARIO as 'Nome Usuário' FROM tb_usuarios";
-        "SELECT * FROM tb_usuarios WHERE N_IDUSUARIO=" + id;
-        "UPDATE tb_usuarios SET T_NOMEUSUARIO='" + u.name + "',T_USERNAME='" + u.username + "',T_SENHAUSUARIO='" + u.password + "',T_STATUSUSUARIO='" + u.status + "',N_NIVELUSUARIO=" + u.level + " WHERE N_IDUSUARIO=" + u.id;    
-        
-        "DELETE FROM tb_usuarios WHERE N_IDUSUARIO='" + id + "'";
-        */
+        public static void UpdateUser(User thisUser, String id)
+        {
+            var command = "UPDATE tb_users SET T_NAME='" + thisUser.name + "', T_USERNAME='" + thisUser.username + "', T_PASSWORD='"+ thisUser.password + "', N_ACCESSLEVEL="+ thisUser.accessLevel + ", T_PHOTO='"+ thisUser.photo + "' WHERE N_ID=" + id;
+            var successMessage = "User updated!";
+            var errorMessage = "Error updating user!";
+            DataManipulation(command, successMessage, errorMessage);
+        }
 
     }
 }

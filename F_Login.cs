@@ -30,17 +30,40 @@ namespace StoreManagement
             {
                 return;
             }
+
             DataTable dataUser = Db.GetUser(username,password);
             if (dataUser.Rows.Count == 1)
             {
-                formMain.lb_user.Text = dataUser.Rows[0].Field<string>("T_USERNAME");
+                formMain.lb_user.Text = dataUser.Rows[0].Field<string>("T_NAME");
+                formMain.pb_photo.ImageLocation = dataUser.Rows[0].Field<string>("T_PHOTO");
                 Globals.accessLevel = int.Parse(dataUser.Rows[0].Field<Int64>("N_ACCESSLEVEL").ToString());
+                switch (Globals.accessLevel)
+                {
+                    case 0:
+                        formMain.lb_function.Text = "Intern";
+                        break;
+                    case 1:
+                        formMain.lb_function.Text = "Operator";
+                        break;
+                    case 2:
+                        formMain.lb_function.Text = "Supervisor";
+                        break;
+                    case 3:
+                        formMain.lb_function.Text = "Manager";
+                        break;
+                    case 4:
+                        formMain.lb_function.Text = "Admin";
+                        break;
+                    default:
+                        formMain.lb_function.Text = "Visitor";
+                        break;
+                }
                 Globals.isLogged = true;
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Cannot find user "+ username + "!");
+                MessageBox.Show("Cannot find user '"+ username + "' OR incorrect password!");
             }
         }
 
@@ -76,11 +99,27 @@ namespace StoreManagement
         {
             if (content.Contains(" "))
             {
-                MessageBox.Show("Spaces are not alowed!");
+                MessageBox.Show("'Spaces' are not alowed!");
                 input.Focus();
                 return true;
             }
             return false;
+        }
+
+        private void tb_username_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                tb_password.Focus();
+            }
+        }
+
+        private void tb_password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_login_Click(this, null);
+            }
         }
     }
 }

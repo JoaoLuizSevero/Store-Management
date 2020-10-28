@@ -36,20 +36,23 @@ namespace StoreManagement
             }
         }
 
-        private void logoffToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn_exit_Click(object sender, EventArgs e)
         {
-            lb_user.Text = "---";
-            Globals.accessLevel = 0;
-            Globals.isLogged = false;
+            if (MessageBox.Show("You really want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Close();
+            }                
         }
 
-        private void logonToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn_login_Click(object sender, EventArgs e)
         {
             if (Globals.isLogged)
             {
-                if (MessageBox.Show("User already LOGGED! Do you want LOGOFF first?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("User already logged in! \nDo you want logoff?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    lb_user.Text = "---";
+                    lb_user.Text = "";
+                    lb_function.Text = "";
+                    pb_photo.Image = null;
                     Globals.accessLevel = 0;
                     Globals.isLogged = false;
                     F_Login f_Login = new F_Login(this);
@@ -67,10 +70,25 @@ namespace StoreManagement
             }
         }
 
-        private void newUserToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn_logoff_Click(object sender, EventArgs e)
         {
-            F_NewUser f_NewUser = new F_NewUser();
-            OpenForm(3, f_NewUser);
+            if(Globals.isLogged == false)
+            {
+                MessageBox.Show("No user logged in!");
+                return;
+            }
+            lb_user.Text = "";
+            lb_function.Text = "";
+            pb_photo.Image = null;
+            Globals.accessLevel = 0;
+            Globals.isLogged = false;
+            MessageBox.Show("user logged off!");
+        }
+
+        private void btn_userManagement_Click(object sender, EventArgs e)
+        {
+            F_UserManagement f_UserManagement = new F_UserManagement();
+            OpenForm(3, f_UserManagement);
         }
 
         //private void gestãoDeUsuáriosToolStripMenuItem_Click(object sender, EventArgs e)
