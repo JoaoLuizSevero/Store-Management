@@ -22,3 +22,4 @@ C:\Users\joao_\Documents\PROGRAMACAO\Repositorios\StoreManagement\obj\Debug\Stor
 C:\Users\joao_\Documents\PROGRAMACAO\Repositorios\StoreManagement\obj\Debug\StoreManagement.F_NewUser.resources
 C:\Users\joao_\Documents\PROGRAMACAO\Repositorios\StoreManagement\obj\Debug\StoreManagement.F_UserManagement.resources
 C:\Users\joao_\Documents\PROGRAMACAO\Repositorios\StoreManagement\obj\Debug\StoreManagement.F_ItemManagement.resources
+C:\Users\joao_\Documents\PROGRAMACAO\Repositorios\StoreManagement\obj\Debug\StoreManagement.F_NewItem.resources

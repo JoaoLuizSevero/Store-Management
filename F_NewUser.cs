@@ -12,8 +12,8 @@ namespace StoreManagement
 {
     public partial class F_NewUser : Form
     {
-        String id;
-        public F_NewUser(String incomingId)
+        string id;
+        public F_NewUser(string incomingId)
         {
             InitializeComponent();
             id = incomingId;
@@ -21,7 +21,7 @@ namespace StoreManagement
             {
                 this.Text = "Edit user";
                 DataTable table = new DataTable();
-                table = Db.GetUserPerId(Int32.Parse(id));
+                table = Db.GetPerId(Int32.Parse(id),"users");
                 tb_name.Text = table.Rows[0].Field<string>("T_NAME");
                 tb_username.Text = table.Rows[0].Field<string>("T_USERNAME");
                 tb_password.Text = table.Rows[0].Field<string>("T_PASSWORD");
@@ -54,11 +54,11 @@ namespace StoreManagement
             }
             if (id != "new")
             {
-                Db.UpdateUser(thisUser,id);
+                Db.SaveUser(thisUser,id);
             }
             else
             {
-                Db.NewUser(thisUser);
+                Db.SaveUser(thisUser,null);
             }
             btn_cancel_Click(this, null);
         }
@@ -83,10 +83,10 @@ namespace StoreManagement
 
         private void btn_addPhoto_Click(object sender, EventArgs e)
         {
-            this.pickPhoto.Title = "Choose photo";
+            this.pickPhoto.Title = "Choose a photo";
             pickPhoto.FileName = "";
             pickPhoto.InitialDirectory = @"Desktop";
-            pickPhoto.Filter = "Image files (*.jpg, *.jpeg, *.png, *.svg) | *.jpg; *.jpeg; *.png; *.svg";
+            pickPhoto.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
             if (pickPhoto.ShowDialog() == DialogResult.OK)
             {
                 pb_photo.ImageLocation = pickPhoto.FileName;

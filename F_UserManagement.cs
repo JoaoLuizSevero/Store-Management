@@ -45,7 +45,7 @@ namespace StoreManagement
         {
             if (MessageBox.Show("Confirm user delete?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                Db.DeleteUser(dgv_users.CurrentRow.Cells[0].Value.ToString());
+                Db.Delete(dgv_users.CurrentRow.Cells[0].Value.ToString(),"users");
                 dgv_users.Rows.Remove(dgv_users.CurrentRow);
                 updateDgv();
             }

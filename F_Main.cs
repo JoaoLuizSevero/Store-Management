@@ -91,6 +91,12 @@ namespace StoreManagement
             OpenForm(3, f_UserManagement);
         }
 
+        private void btn_itemManagement_Click(object sender, EventArgs e)
+        {
+            F_ItemManagement f_ItemManagement = new F_ItemManagement();
+            OpenForm(2, f_ItemManagement);
+        }
+
         //private void gestãoDeUsuáriosToolStripMenuItem_Click(object sender, EventArgs e)
         //{
         //    F_GestaoUsuarios f_GestaoUsuarios = new F_GestaoUsuarios();

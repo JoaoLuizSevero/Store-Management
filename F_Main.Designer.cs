@@ -165,6 +165,7 @@
             this.btn_itemManagement.TabIndex = 12;
             this.btn_itemManagement.Text = "Item Management";
             this.btn_itemManagement.UseVisualStyleBackColor = true;
+            this.btn_itemManagement.Click += new System.EventHandler(this.btn_itemManagement_Click);
             // 
             // panel1
             // 

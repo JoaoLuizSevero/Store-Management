@@ -9,7 +9,11 @@ namespace StoreManagement
     class Item
     {
         public Int32 id;
-        public string name;
-        public Int32 price;
+        public string model;
+        public string price;
+        public Int32 stock;
+        public string description;
+        public string color;
+        public string image;
     }
 }
