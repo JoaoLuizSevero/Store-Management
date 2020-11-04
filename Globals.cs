@@ -10,6 +10,7 @@ namespace StoreManagement
     {
         public static string version = "1.0";
         public static Boolean isLogged = false;
+        public static string userLogged;
         public static int accessLevel = 0;
         public static string localPath = System.Environment.CurrentDirectory;
         //public static string localPath = System.AppDomain.CurrentDomain.BaseDirectory.ToString();

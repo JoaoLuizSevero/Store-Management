@@ -33,6 +33,7 @@ namespace StoreManagement
         {
             dgv_users.DataSource = Db.GetAllUsers();
         }
+
         private void F_UserManagement_Load(object sender, EventArgs e)
         {
             updateDgv();

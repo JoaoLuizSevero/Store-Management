@@ -73,34 +73,45 @@ namespace StoreManagement
             }
         }
 
-        public static DataTable GetAllUsers()
-        {
-            return DataQuery("SELECT N_ID as 'ID', T_NAME as 'Name', CASE WHEN N_ACCESSLEVEL = 0 THEN 'Intern' WHEN N_ACCESSLEVEL = 1 THEN 'Operator' WHEN N_ACCESSLEVEL = 2 THEN 'Supervisor' WHEN N_ACCESSLEVEL = 3 THEN 'Manager' END as 'Access level' FROM tb_users WHERE T_NAME NOT IN (SELECT T_NAME FROM `tb_users` WHERE T_NAME='admin') ORDER BY N_ID");
-        }
-
-        public static DataTable GetAllItems()
-        {
-            return DataQuery("SELECT N_ID as 'ID', T_MODEL as 'Model', T_PRICE as 'Price', N_QUANTITY as 'Stock', T_DESCRIPTION as 'Size', T_COLOR as 'Color' FROM tb_items ORDER BY N_ID");
-        }
-
-        public static DataTable GetUser(string username, string password)
-        {
-            return DataQuery("SELECT * FROM tb_users WHERE T_USERNAME='" + username + "' AND T_PASSWORD='" + password + "'");
-        }
+        // ===================================== GENERIC
 
         public static DataTable GetPerId(Int32 id, String table)
         {
-            return DataQuery("SELECT * FROM tb_"+table+" WHERE N_ID=" + id);
+            return DataQuery("SELECT * FROM tb_" + table + " WHERE N_ID=" + id);
         }
 
         public static void Delete(string id, String table)
         {
-            DataManipulation("DELETE FROM tb_"+table+" WHERE N_ID = " + id,"Deleted successful!","Error deleting!");
+            DataManipulation("DELETE FROM tb_" + table + " WHERE N_ID = " + id, "Deleted successful!", "Error deleting!");
         }
 
+        // ===================================== SALES
+
+        public static DataTable GetAllSales()
+        {
+            return DataQuery("SELECT N_ID as 'ID', T_DATE as 'Date', N_VALUE as 'Value', T_USER as 'User', T_DESCRIPTION as 'Description' FROM tb_sales ORDER BY N_ID");
+        }
+
+        public static void RegisterSale(Sale newSale)
+        {
+            var command = "INSERT INTO tb_sales (T_DATE, N_VALUE, T_USER, T_DESCRIPTION) VALUES ('" + newSale.date + "'," + newSale.value + ",'" + newSale.user + "','" + newSale.description + "')";
+            var errorMessage = "Error registering purchase!";
+            DataManipulation(command, null, errorMessage);
+        }
+
+        // ===================================== USERS
+
+        public static DataTable GetAllUsers()
+        {
+            return DataQuery("SELECT N_ID as 'ID', T_NAME as 'Name', CASE WHEN N_ACCESSLEVEL = 0 THEN 'Intern' WHEN N_ACCESSLEVEL = 1 THEN 'Operator' WHEN N_ACCESSLEVEL = 2 THEN 'Supervisor' WHEN N_ACCESSLEVEL = 3 THEN 'Manager' END as 'Access level' FROM tb_users WHERE T_NAME NOT IN (SELECT T_NAME FROM `tb_users` WHERE T_NAME='admin') ORDER BY N_ID");
+        }
+        public static DataTable GetUser(string username, string password)
+        {
+            return DataQuery("SELECT * FROM tb_users WHERE T_USERNAME='" + username + "' AND T_PASSWORD='" + password + "'");
+        }
         public static void SaveUser(User thisUser, String id)
         {
-            if(id != null)
+            if (id != null)
             {
                 var command = "UPDATE tb_users SET T_NAME='" + thisUser.name + "', T_USERNAME='" + thisUser.username + "', T_PASSWORD='" + thisUser.password + "', N_ACCESSLEVEL=" + thisUser.accessLevel + ", T_PHOTO='" + thisUser.photo + "' WHERE N_ID=" + id;
                 var successMessage = "User updated!";
@@ -114,6 +125,25 @@ namespace StoreManagement
                 var errorMessage = "Error adding new user!";
                 DataManipulation(command, successMessage, errorMessage);
             }
+        }
+
+        // ===================================== ITEMS
+
+        public static DataTable GetAllItems()
+        {
+            return DataQuery("SELECT N_ID as 'ID', T_MODEL as 'Model', T_PRICE as 'Price', N_QUANTITY as 'Stock', T_DESCRIPTION as 'Size', T_COLOR as 'Color' FROM tb_items ORDER BY N_ID");
+        }
+
+        public static Int32 GetItemStock(string model)
+        {
+            DataTable itemData = DataQuery("SELECT N_QUANTITY FROM tb_items WHERE T_MODEL='" + model + "'");
+            return Convert.ToInt32(itemData.Rows[0].Field<Int64>("N_QUANTITY"));
+        }
+
+        public static void ChangeItemQuantity(Int32 quantity, string model)
+        {
+            var command = "UPDATE tb_items SET N_QUANTITY=" + quantity.ToString() + " WHERE T_MODEL='" + model +"'";
+            DataManipulation(command, null, null);
         }
 
         public static void SaveItem(Item thisItem, string id)

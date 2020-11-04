@@ -37,6 +37,7 @@ namespace StoreManagement
                 formMain.lb_user.Text = dataUser.Rows[0].Field<string>("T_NAME");
                 formMain.pb_photo.ImageLocation = dataUser.Rows[0].Field<string>("T_PHOTO");
                 Globals.accessLevel = int.Parse(dataUser.Rows[0].Field<Int64>("N_ACCESSLEVEL").ToString());
+                Globals.userLogged = dataUser.Rows[0].Field<string>("T_NAME");
                 switch (Globals.accessLevel)
                 {
                     case 0:

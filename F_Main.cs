@@ -54,6 +54,7 @@ namespace StoreManagement
                     lb_function.Text = "";
                     pb_photo.Image = null;
                     Globals.accessLevel = 0;
+                    Globals.userLogged = "";
                     Globals.isLogged = false;
                     F_Login f_Login = new F_Login(this);
                     f_Login.ShowDialog();
@@ -82,6 +83,7 @@ namespace StoreManagement
             pb_photo.Image = null;
             Globals.accessLevel = 0;
             Globals.isLogged = false;
+            Globals.userLogged = "";
             MessageBox.Show("user logged off!");
         }
 
@@ -97,42 +99,21 @@ namespace StoreManagement
             OpenForm(2, f_ItemManagement);
         }
 
-        //private void gestãoDeUsuáriosToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    F_GestaoUsuarios f_GestaoUsuarios = new F_GestaoUsuarios();
-        //    OpenForm(2, f_GestaoUsuarios);
-        //}
+        private void btn_salesManagement_Click(object sender, EventArgs e)
+        {
+            F_SalesManagement f_SalesManagement = new F_SalesManagement();
+            OpenForm(0, f_SalesManagement);
+        }
 
-        //private void novoAlunoToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    F_NovoAluno f_NovoAluno = new F_NovoAluno();
-        //    OpenForm(1, f_NovoAluno);
-        //}
+        private void btn_salesRecord_Click(object sender, EventArgs e)
+        {
+            F_SalesRecord f_SalesRecord = new F_SalesRecord();
+            OpenForm(1, f_SalesRecord);
+        }
 
-        //private void horáriosToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    F_Horarios f_Horarios = new F_Horarios();
-        //    OpenForm(2, f_Horarios);
-        //}
-
-        //private void professoresToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    F_GestaoProfessores f_GestaoProfessores = new F_GestaoProfessores();
-        //    OpenForm(2, f_GestaoProfessores);
-        //}
-
-
-
-        //private void gestãoDeTurmasToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    F_GestaoTurmas f_GestaoTurmas = new F_GestaoTurmas();
-        //    OpenForm(2, f_GestaoTurmas);
-        //}
-
-        //private void gestãoDeAlunosToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    F_GestaoAlunos f_GestaoAlunos = new F_GestaoAlunos();
-        //    OpenForm(1, f_GestaoAlunos);
-        //}
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("chrome.exe", "https://www.instagram.com/visual.cult/?hl=pt-br");
+        }
     }
 }

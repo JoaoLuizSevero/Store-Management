@@ -20,7 +20,7 @@ namespace StoreManagement
             if (id != "new")
             {
                 this.Text = "Edit item";
-                DataTable table = new DataTable();
+                DataTable table;
                 table = Db.GetPerId(Int32.Parse(id),"items");
                 tb_model.Text = table.Rows[0].Field<string>("T_MODEL");
                 nb_price.Text = table.Rows[0].Field<string>("T_PRICE");
