@@ -6,7 +6,7 @@ Store management in **C#** using **SQLite database**.
  
 ## Main
 
-In main page we can **login** and have access to other areas, but only accordly with **access level** granted to the user that is logged. Login don't allow **spaces** in username or password. The default user credentials is **admin/admin**.
+In main page we can **login** and have access to other areas, but only accordly with **access level** granted to the user that is logged. Login don't allow **spaces** in username or password. The default user credentials is **admin/admin**. (Clicking on the logo you will be **linked** directly to the **Instagram of Visual Cult**, who is actually a **REAL SHOP!!** Feel free to follow us and get some **products**... :sunglasses:
  
 ![Main](https://github.com/JoaoLuizSevero/StoreManagement/blob/main/assets/readme/main.PNG)
 
