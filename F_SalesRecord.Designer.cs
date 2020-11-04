@@ -116,6 +116,7 @@
             this.btn_find.TabIndex = 17;
             this.btn_find.Text = "Find";
             this.btn_find.UseVisualStyleBackColor = true;
+            this.btn_find.Click += new System.EventHandler(this.btn_find_Click);
             // 
             // btn_return
             // 

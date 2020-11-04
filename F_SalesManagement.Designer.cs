@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_items = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_finish = new System.Windows.Forms.Button();
             this.btn_removeItem = new System.Windows.Forms.Button();
             this.btn_addItem = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,6 +43,8 @@
             this.btn_close = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.lb_operator = new System.Windows.Forms.Label();
+            this.btn_clear = new System.Windows.Forms.Button();
+            this.btn_finish = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_items)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ntb_id)).BeginInit();
             this.SuspendLayout();
@@ -55,14 +56,14 @@
             this.dgv_items.AllowUserToResizeColumns = false;
             this.dgv_items.AllowUserToResizeRows = false;
             this.dgv_items.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_items.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_items.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_items.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -73,14 +74,14 @@
             this.dgv_items.MultiSelect = false;
             this.dgv_items.Name = "dgv_items";
             this.dgv_items.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_items.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_items.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgv_items.RowHeadersVisible = false;
             this.dgv_items.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_items.Size = new System.Drawing.Size(320, 424);
@@ -104,16 +105,6 @@
             this.Column3.HeaderText = "Price";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            // 
-            // btn_finish
-            // 
-            this.btn_finish.Location = new System.Drawing.Point(8, 138);
-            this.btn_finish.Name = "btn_finish";
-            this.btn_finish.Size = new System.Drawing.Size(176, 23);
-            this.btn_finish.TabIndex = 11;
-            this.btn_finish.Text = "Finish";
-            this.btn_finish.UseVisualStyleBackColor = true;
-            this.btn_finish.Click += new System.EventHandler(this.btn_finish_Click);
             // 
             // btn_removeItem
             // 
@@ -211,11 +202,32 @@
             this.lb_operator.Size = new System.Drawing.Size(0, 13);
             this.lb_operator.TabIndex = 21;
             // 
+            // btn_clear
+            // 
+            this.btn_clear.Location = new System.Drawing.Point(8, 138);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(176, 23);
+            this.btn_clear.TabIndex = 22;
+            this.btn_clear.Text = "Clear items";
+            this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            // 
+            // btn_finish
+            // 
+            this.btn_finish.Location = new System.Drawing.Point(8, 167);
+            this.btn_finish.Name = "btn_finish";
+            this.btn_finish.Size = new System.Drawing.Size(176, 23);
+            this.btn_finish.TabIndex = 11;
+            this.btn_finish.Text = "Finish";
+            this.btn_finish.UseVisualStyleBackColor = true;
+            this.btn_finish.Click += new System.EventHandler(this.btn_finish_Click);
+            // 
             // F_SalesManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(517, 477);
+            this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.lb_operator);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_close);
@@ -233,7 +245,6 @@
             this.Name = "F_SalesManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sales Management";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.F_SalesManagement_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_items)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ntb_id)).EndInit();
             this.ResumeLayout(false);
@@ -244,7 +255,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgv_items;
-        private System.Windows.Forms.Button btn_finish;
         private System.Windows.Forms.Button btn_removeItem;
         private System.Windows.Forms.Button btn_addItem;
         private System.Windows.Forms.Label label1;
@@ -257,5 +267,7 @@
         private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lb_operator;
+        private System.Windows.Forms.Button btn_clear;
+        private System.Windows.Forms.Button btn_finish;
     }
 }

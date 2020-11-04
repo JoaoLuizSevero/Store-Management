@@ -32,7 +32,6 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.nb_accessLevel = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_name = new System.Windows.Forms.TextBox();
@@ -42,8 +41,8 @@
             this.btn_addPhoto = new System.Windows.Forms.Button();
             this.pickPhoto = new System.Windows.Forms.OpenFileDialog();
             this.pb_photo = new System.Windows.Forms.PictureBox();
+            this.cb_accessLevel = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nb_accessLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_photo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,18 +86,6 @@
             this.label5.Size = new System.Drawing.Size(67, 13);
             this.label5.TabIndex = 23;
             this.label5.Text = "Access level";
-            // 
-            // nb_accessLevel
-            // 
-            this.nb_accessLevel.Location = new System.Drawing.Point(15, 115);
-            this.nb_accessLevel.Maximum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.nb_accessLevel.Name = "nb_accessLevel";
-            this.nb_accessLevel.Size = new System.Drawing.Size(100, 20);
-            this.nb_accessLevel.TabIndex = 3;
             // 
             // label3
             // 
@@ -177,16 +164,24 @@
             this.pb_photo.TabIndex = 28;
             this.pb_photo.TabStop = false;
             // 
+            // cb_accessLevel
+            // 
+            this.cb_accessLevel.FormattingEnabled = true;
+            this.cb_accessLevel.Location = new System.Drawing.Point(15, 114);
+            this.cb_accessLevel.Name = "cb_accessLevel";
+            this.cb_accessLevel.Size = new System.Drawing.Size(100, 21);
+            this.cb_accessLevel.TabIndex = 29;
+            // 
             // F_NewUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(340, 185);
+            this.Controls.Add(this.cb_accessLevel);
             this.Controls.Add(this.pb_photo);
             this.Controls.Add(this.btn_addPhoto);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.nb_accessLevel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tb_name);
@@ -199,8 +194,8 @@
             this.Name = "F_NewUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New user";
+            this.Load += new System.EventHandler(this.F_NewUser_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nb_accessLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_photo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -213,7 +208,6 @@
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown nb_accessLevel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tb_name;
@@ -223,5 +217,6 @@
         private System.Windows.Forms.Button btn_addPhoto;
         private System.Windows.Forms.OpenFileDialog pickPhoto;
         public System.Windows.Forms.PictureBox pb_photo;
+        private System.Windows.Forms.ComboBox cb_accessLevel;
     }
 }

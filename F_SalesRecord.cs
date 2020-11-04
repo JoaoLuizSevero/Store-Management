@@ -44,5 +44,18 @@ namespace StoreManagement
         {
             Close();
         }
+
+        private void btn_find_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dgv_sales.Rows)
+            {
+                if (row.Cells[0].Value.ToString() == ntb_id.Value.ToString())
+                {
+                    dgv_sales.Rows[row.Index].Selected = true;
+                    return;
+                }
+            }
+            MessageBox.Show("Can't find current ID!");
+        }
     }
 }

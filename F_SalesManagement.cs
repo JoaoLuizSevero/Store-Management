@@ -46,11 +46,13 @@ namespace StoreManagement
                                 clientQuantity++;
                                 dgv_items.Rows[i].Cells[1].Value = clientQuantity;
                                 calcTotalPrice(Convert.ToInt32(price));
+                                ntb_id.Value = 0;
                                 return;
                             }
                             else
                             {
                                 MessageBox.Show("Item out of stock!");
+                                ntb_id.Value = 0;
                                 return;
                             }
                         }
@@ -87,6 +89,12 @@ namespace StoreManagement
 
         private void calcTotalPrice(Int32 value)
         {
+            if (value == 0)
+            {
+                totalPrice = 0;
+                lb_total.Text = "0,00";
+                return;
+            }
             totalPrice += value;
             lb_total.Text = totalPrice.ToString() + ",00";
         }
@@ -133,8 +141,13 @@ namespace StoreManagement
                     Int32 quantity = Convert.ToInt32(dgv_items.Rows[i].Cells[1].Value);
                     Int32 stock = Db.GetItemStock(model);
                     Db.ChangeItemQuantity(stock - quantity > 0 ? stock - quantity : 0, model);
+                }
+                int rows = dgv_items.Rows.Count;
+                for (Int32 i = rows - 1; i >= 0; i--)
+                {
                     dgv_items.Rows.Remove(dgv_items.Rows[i]);
                 }
+                calcTotalPrice(0);
                 Db.RegisterSale(newSale);
                 if (MessageBox.Show("Purchase confirmed!\n\nPrint voucher?", "Voucher", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) { 
 
@@ -143,25 +156,33 @@ namespace StoreManagement
             }
         }
 
-        private void F_SalesManagement_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            for (Int32 i = 0; i < dgv_items.Rows.Count; i++)
-            {
-                dgv_items.Rows.Remove(dgv_items.Rows[i]);
-            }
-            ntb_id.Value = 0;
-        }
-
         private void btn_close_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Really want to close?", "Close", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                for (Int32 i = 0; i < dgv_items.Rows.Count; i++)
+                int rows = dgv_items.Rows.Count;
+                for (Int32 i = rows - 1; i >= 0; i--)
                 {
                     dgv_items.Rows.Remove(dgv_items.Rows[i]);
                 }
                 ntb_id.Value = 0;
+                calcTotalPrice(0);
                 Close();
+            }
+        }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Confirm cleaning of the sale?", "Clear", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                int rows = dgv_items.Rows.Count;
+                for (Int32 i = rows-1; i >= 0; i--)
+                {
+                    MessageBox.Show(i.ToString() + " | " + rows);
+                    dgv_items.Rows.Remove(dgv_items.Rows[i]);
+                }
+                ntb_id.Value = 0;
+                calcTotalPrice(0);
             }
         }
     }
