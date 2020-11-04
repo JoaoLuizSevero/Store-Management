@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ namespace StoreManagement
     public partial class F_SalesManagement : Form
     {
         Int32 totalPrice = 0;
+        StringReader reader;
+        int saleId;
 
         public F_SalesManagement()
         {
@@ -28,8 +31,7 @@ namespace StoreManagement
         {
             try
             {
-                DataTable itemData;
-                itemData = Db.GetPerId(Convert.ToInt32(ntb_id.Value), "items");
+                DataTable itemData = Db.GetPerId(Convert.ToInt32(ntb_id.Value), "items");
 
                 string model = itemData.Rows[0].Field<string>("T_MODEL");
                 Int32 stock = Convert.ToInt32(itemData.Rows[0].Field<Int64>("N_QUANTITY"));
@@ -119,9 +121,11 @@ namespace StoreManagement
         private void btn_finish_Click(object sender, EventArgs e)
         {
             Sale newSale = new Sale();
+            newSale.id = Db.GetNextSaleId();
+            saleId = newSale.id;
             newSale.value = totalPrice;
             newSale.date = DateTime.Today.ToString();
-            string message = newSale.date + "\nPurchase nº: " + "10" + "\nOperator: "+ Globals.userLogged +"\n------------------------------\nItems:\n";
+            string message = newSale.date + "\nPurchase nº: " + newSale.id + "\nOperator: "+ Globals.userLogged +"\n------------------------------\nItems:\n";
             for (Int32 i = 0; i < dgv_items.Rows.Count; i++)
             {
                 string model = dgv_items.Rows[i].Cells[0].Value.ToString();
@@ -149,9 +153,8 @@ namespace StoreManagement
                 }
                 calcTotalPrice(0);
                 Db.RegisterSale(newSale);
-                if (MessageBox.Show("Purchase confirmed!\n\nPrint voucher?", "Voucher", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) { 
-
-
+                if (MessageBox.Show("Purchase confirmed!\n\nPrint voucher?", "Voucher", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                    PrintVoucher(message);
                 }
             }
         }
@@ -184,6 +187,37 @@ namespace StoreManagement
                 ntb_id.Value = 0;
                 calcTotalPrice(0);
             }
+        }
+
+        private void PrintVoucher(string content)
+        {
+            printDialog.Document = printDocument;
+            printDialog.Document.DocumentName = "voucher-" + saleId;
+            reader = new StringReader(content);
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                printDocument.Print();
+            }
+        }
+
+        private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            float marginLeft = e.MarginBounds.Left - 50;
+            float marginTop = e.MarginBounds.Top - 50;
+            if (marginLeft < 5) marginLeft = 20;
+            if (marginTop < 5) marginTop = 20;
+            Font contentFont = new Font("TimesNewRoman", 10);
+            SolidBrush pen = new SolidBrush(Color.Black);
+            string line = reader.ReadLine();
+            int cont = 0;
+            while (line != null)
+            {
+                float Y = marginTop + (cont * contentFont.GetHeight(e.Graphics));
+                e.Graphics.DrawString(line, contentFont, pen, marginLeft, Y, new StringFormat());
+                cont++;
+                line = reader.ReadLine();
+            }
+            pen.Dispose();
         }
     }
 }

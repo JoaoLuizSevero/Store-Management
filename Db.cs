@@ -87,6 +87,12 @@ namespace StoreManagement
 
         // ===================================== SALES
 
+        public static Int32 GetNextSaleId()
+        {
+            DataTable salesId = DataQuery("SELECT N_ID FROM tb_sales ORDER BY N_ID");
+            return Convert.ToInt32(salesId.Rows[salesId.Rows.Count -1].Field<Int64>("N_ID"))+1;
+        }
+
         public static DataTable GetAllSales()
         {
             return DataQuery("SELECT N_ID as 'ID', T_DATE as 'Date', N_VALUE as 'Value', T_USER as 'User', T_DESCRIPTION as 'Description' FROM tb_sales ORDER BY N_ID");

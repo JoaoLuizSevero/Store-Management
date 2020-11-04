@@ -42,8 +42,8 @@
             this.btn_itemManagement = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_salesManagement = new System.Windows.Forms.Button();
             this.btn_salesRecord = new System.Windows.Forms.Button();
+            this.btn_salesManagement = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pb_photo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -104,7 +104,7 @@
             this.btn_logOff.Location = new System.Drawing.Point(12, 219);
             this.btn_logOff.Name = "btn_logOff";
             this.btn_logOff.Size = new System.Drawing.Size(96, 23);
-            this.btn_logOff.TabIndex = 9;
+            this.btn_logOff.TabIndex = 2;
             this.btn_logOff.Text = "LogOff";
             this.btn_logOff.UseVisualStyleBackColor = true;
             this.btn_logOff.Click += new System.EventHandler(this.btn_logoff_Click);
@@ -114,7 +114,7 @@
             this.btn_logOn.Location = new System.Drawing.Point(12, 190);
             this.btn_logOn.Name = "btn_logOn";
             this.btn_logOn.Size = new System.Drawing.Size(96, 23);
-            this.btn_logOn.TabIndex = 8;
+            this.btn_logOn.TabIndex = 1;
             this.btn_logOn.Text = "LogOn";
             this.btn_logOn.UseVisualStyleBackColor = true;
             this.btn_logOn.Click += new System.EventHandler(this.btn_login_Click);
@@ -124,7 +124,7 @@
             this.btn_userManagement.Location = new System.Drawing.Point(3, 19);
             this.btn_userManagement.Name = "btn_userManagement";
             this.btn_userManagement.Size = new System.Drawing.Size(119, 24);
-            this.btn_userManagement.TabIndex = 7;
+            this.btn_userManagement.TabIndex = 3;
             this.btn_userManagement.Text = "User Management";
             this.btn_userManagement.UseVisualStyleBackColor = true;
             this.btn_userManagement.Click += new System.EventHandler(this.btn_userManagement_Click);
@@ -134,7 +134,7 @@
             this.btn_exit.Location = new System.Drawing.Point(3, 222);
             this.btn_exit.Name = "btn_exit";
             this.btn_exit.Size = new System.Drawing.Size(119, 24);
-            this.btn_exit.TabIndex = 10;
+            this.btn_exit.TabIndex = 7;
             this.btn_exit.Text = "Exit";
             this.btn_exit.UseVisualStyleBackColor = true;
             this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
@@ -143,8 +143,7 @@
             // 
             this.pictureBox2.BackgroundImage = global::StoreManagement.Properties.Resources.logo;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox2.Location = new System.Drawing.Point(178, 50);
+            this.pictureBox2.Location = new System.Drawing.Point(180, 53);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(125, 125);
             this.pictureBox2.TabIndex = 11;
@@ -154,7 +153,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(175, 188);
+            this.label4.Location = new System.Drawing.Point(177, 181);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(131, 13);
             this.label4.TabIndex = 10;
@@ -165,7 +164,7 @@
             this.btn_itemManagement.Location = new System.Drawing.Point(3, 49);
             this.btn_itemManagement.Name = "btn_itemManagement";
             this.btn_itemManagement.Size = new System.Drawing.Size(119, 24);
-            this.btn_itemManagement.TabIndex = 12;
+            this.btn_itemManagement.TabIndex = 4;
             this.btn_itemManagement.Text = "Item Management";
             this.btn_itemManagement.UseVisualStyleBackColor = true;
             this.btn_itemManagement.Click += new System.EventHandler(this.btn_itemManagement_Click);
@@ -182,7 +181,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(172, 254);
+            this.panel1.Size = new System.Drawing.Size(174, 254);
             this.panel1.TabIndex = 13;
             // 
             // panel2
@@ -193,30 +192,30 @@
             this.panel2.Controls.Add(this.btn_exit);
             this.panel2.Controls.Add(this.btn_itemManagement);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(333, 0);
+            this.panel2.Location = new System.Drawing.Point(351, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(130, 254);
             this.panel2.TabIndex = 14;
             // 
-            // btn_salesManagement
-            // 
-            this.btn_salesManagement.Location = new System.Drawing.Point(3, 79);
-            this.btn_salesManagement.Name = "btn_salesManagement";
-            this.btn_salesManagement.Size = new System.Drawing.Size(119, 24);
-            this.btn_salesManagement.TabIndex = 13;
-            this.btn_salesManagement.Text = "Sales operation";
-            this.btn_salesManagement.UseVisualStyleBackColor = true;
-            this.btn_salesManagement.Click += new System.EventHandler(this.btn_salesManagement_Click);
-            // 
             // btn_salesRecord
             // 
-            this.btn_salesRecord.Location = new System.Drawing.Point(3, 109);
+            this.btn_salesRecord.Location = new System.Drawing.Point(3, 79);
             this.btn_salesRecord.Name = "btn_salesRecord";
             this.btn_salesRecord.Size = new System.Drawing.Size(119, 24);
-            this.btn_salesRecord.TabIndex = 14;
-            this.btn_salesRecord.Text = "Sales record";
+            this.btn_salesRecord.TabIndex = 5;
+            this.btn_salesRecord.Text = "Sales Archive";
             this.btn_salesRecord.UseVisualStyleBackColor = true;
             this.btn_salesRecord.Click += new System.EventHandler(this.btn_salesRecord_Click);
+            // 
+            // btn_salesManagement
+            // 
+            this.btn_salesManagement.Location = new System.Drawing.Point(3, 109);
+            this.btn_salesManagement.Name = "btn_salesManagement";
+            this.btn_salesManagement.Size = new System.Drawing.Size(119, 24);
+            this.btn_salesManagement.TabIndex = 6;
+            this.btn_salesManagement.Text = "Sale Operation";
+            this.btn_salesManagement.UseVisualStyleBackColor = true;
+            this.btn_salesManagement.Click += new System.EventHandler(this.btn_salesManagement_Click);
             // 
             // F_Main
             // 
@@ -224,7 +223,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(463, 254);
+            this.ClientSize = new System.Drawing.Size(481, 254);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox2);
